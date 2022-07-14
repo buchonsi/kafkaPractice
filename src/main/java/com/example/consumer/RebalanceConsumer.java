@@ -15,7 +15,7 @@ public class RebalanceConsumer {
     private final static String BOOTSTRAP_SERVERS = "localhost:9092";
     private final static String GROUP_ID = "test-group";
     private static KafkaConsumer<String, String> consumer;
-    private static Map<TopicPartition, OffsetAndMetadata> currentOffset = new HashMap<>();
+    private final static Map<TopicPartition, OffsetAndMetadata> currentOffset = new HashMap<>();
     public static void main(String[] args) {
         Properties configs = new Properties();
         configs.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
@@ -24,7 +24,7 @@ public class RebalanceConsumer {
         configs.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
 
         consumer = new KafkaConsumer<String, String>(configs);
-        consumer.subscribe(Arrays.asList(TOPIC_NAME));
+        consumer.subscribe(Arrays.asList(TOPIC_NAME), new RebalanceListener());
 
         while (true) {
             ConsumerRecords<String, String> records = consumer.poll(Duration.ofSeconds(1));
@@ -39,7 +39,7 @@ public class RebalanceConsumer {
     private static class RebalanceListener implements ConsumerRebalanceListener {
         @Override
         public void onPartitionsRevoked(Collection<TopicPartition> partitions) {
-            logger.warn("Partitions are assgined");
+            logger.warn("Partitions are assigned");
         }
 
         @Override
