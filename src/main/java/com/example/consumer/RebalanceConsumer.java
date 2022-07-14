@@ -10,7 +10,7 @@ import java.time.Duration;
 import java.util.*;
 
 public class RebalanceConsumer {
-    private final static Logger logger = LoggerFactory.getLogger(SimpleConsumer.class);
+    private final static Logger logger = LoggerFactory.getLogger(RebalanceConsumer.class);
     private final static String TOPIC_NAME = "test";
     private final static String BOOTSTRAP_SERVERS = "localhost:9092";
     private final static String GROUP_ID = "test-group";

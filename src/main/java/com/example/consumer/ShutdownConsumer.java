@@ -16,7 +16,7 @@ import java.util.Collections;
 import java.util.Properties;
 
 public class ShutdownConsumer {
-    private final static Logger logger = LoggerFactory.getLogger(SyncConsumer.class);
+    private final static Logger logger = LoggerFactory.getLogger(ShutdownConsumer.class);
     private final static String TOPIC_NAME = "test";
     private final static String BOOTSTRAP_SERVERS = "localhost:9092";
     private final static String GROUP_ID = "test-group";

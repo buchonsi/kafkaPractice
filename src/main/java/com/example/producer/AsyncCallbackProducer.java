@@ -14,7 +14,7 @@ import java.util.Properties;
 import java.util.concurrent.ExecutionException;
 
 public class AsyncCallbackProducer {
-    private final static Logger logger = LoggerFactory.getLogger(SimpleProducer.class);
+    private final static Logger logger = LoggerFactory.getLogger(AsyncCallbackProducer.class);
     private final static String TOPIC_NAME = "test";
     private final static String BOOTSTRAP_SERVERS = "localhost:9092";
     public static void main(String[] args) throws ExecutionException, InterruptedException {
